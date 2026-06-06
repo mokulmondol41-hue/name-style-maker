@@ -1,6 +1,0 @@
-{
-  "name": "Name Style Maker",
-  "description": "Generate 100+ stylish Unicode fonts, borders, and gaming-style text formats offline. Copy, share, or save your favorites with dark mode customization.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
