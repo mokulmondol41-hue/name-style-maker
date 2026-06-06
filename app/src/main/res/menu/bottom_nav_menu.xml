@@ -6,10 +6,14 @@
         android:title="@string/title_home" />
     <item
         android:id="@+id/nav_favorites"
-        android:icon="@drawable/ic_favorite_border"
+        android:icon="@drawable/ic_favorite"
         android:title="@string/title_favorites" />
     <item
         android:id="@+id/nav_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_settings" />
+    <item
+        android:id="@+id/nav_developer"
+        android:icon="@drawable/ic_developer"
+        android:title="@string/setting_developer" />
 </menu>

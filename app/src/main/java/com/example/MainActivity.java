@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottom_nav);
 
-        // Define our navigation listeners
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             String title = getString(R.string.app_name);
@@ -36,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_settings) {
                 selectedFragment = new SettingsFragment();
                 title = getString(R.string.title_settings);
+            } else if (itemId == R.id.nav_developer) {
+                selectedFragment = new DeveloperFragment();
+                title = getString(R.string.setting_developer);
             }
 
             if (selectedFragment != null) {
@@ -50,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        // Load the default screen on first create
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new HomeFragment())
