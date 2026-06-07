@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.card.MaterialCardView;
 
 public class DeveloperFragment extends Fragment {
 
@@ -23,19 +24,17 @@ public class DeveloperFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_developer, container, false);
 
-        // Load profile picture with Glide
         ImageView imgAvatar = view.findViewById(R.id.img_dev_avatar);
         Glide.with(this)
             .load(AVATAR_URL)
             .apply(new RequestOptions()
-                .circleCrop()
+                .centerCrop()
                 .placeholder(R.drawable.ic_developer)
                 .error(R.drawable.ic_developer))
             .into(imgAvatar);
 
-        // Telegram icon click -> open channel
-        ImageView imgTelegram = view.findViewById(R.id.img_telegram_icon);
-        imgTelegram.setOnClickListener(v -> {
+        MaterialCardView telegramCard = view.findViewById(R.id.img_telegram_icon);
+        telegramCard.setOnClickListener(v -> {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(TELEGRAM_URL)));
         });
 

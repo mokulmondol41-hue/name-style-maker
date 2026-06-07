@@ -6,16 +6,17 @@
     android:background="@color/background"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="32dp">
 
+    <!-- Logo Card with 3D elevation -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/splash_card"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:strokeWidth="0dp">
-
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="16dp"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="2dp">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,30 +25,54 @@
             android:contentDescription="@string/app_name" />
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- App Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="@string/app_name"
+        android:text="FF Name Style"
         android:textColor="@color/primary"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-medium" />
+        android:fontFamily="sans-serif-black"
+        android:letterSpacing="0.02" />
 
+    <!-- Subtitle -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="100+ Stylish Unicode Text &amp; Gaming Fonts"
+        android:text="100+ Stylish Unicode Gaming Fonts"
         android:textColor="@color/text_secondary"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:fontFamily="sans-serif"
-        android:letterSpacing="0.05" />
+        android:letterSpacing="0.04" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:layout_width="120dp"
+    <!-- Premium badge -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/primary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:text="FREE FIRE EDITION"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Loading indicator -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:indeterminate="true"
         app:indicatorColor="@color/primary"
         app:trackColor="@color/surface_variant"

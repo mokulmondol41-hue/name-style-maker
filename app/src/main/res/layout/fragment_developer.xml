@@ -9,18 +9,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="16dp"
         android:gravity="center">
+
+        <!-- Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:cardBackgroundColor="@color/primary"
+            android:layout_marginBottom="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="18dp"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_developer"
+                    android:tint="@color/white"
+                    android:layout_marginEnd="12dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Developer Profile"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-black" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meet the creator"
+                        android:textColor="#CCE8FFFF"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Profile Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="24dp"
-            app:cardElevation="6dp"
+            app:cardElevation="8dp"
             app:strokeColor="@color/divider"
-            app:strokeWidth="1dp"
-            android:layout_marginBottom="20dp">
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,15 +70,22 @@
                 android:padding="28dp"
                 android:gravity="center">
 
-                <!-- Profile Picture (circle, loaded via Glide) -->
-                <ImageView
-                    android:id="@+id/img_dev_avatar"
+                <!-- Profile Picture -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/circle_bg"
-                    android:src="@drawable/ic_developer"
-                    android:layout_marginBottom="18dp" />
+                    app:cardCornerRadius="55dp"
+                    app:cardElevation="10dp"
+                    app:strokeColor="@color/primary"
+                    app:strokeWidth="3dp"
+                    android:layout_marginBottom="18dp">
+                    <ImageView
+                        android:id="@+id/img_dev_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_developer" />
+                </com.google.android.material.card.MaterialCardView>
 
                 <!-- Developer Name -->
                 <TextView
@@ -47,45 +95,33 @@
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
-                    android:layout_marginBottom="16dp" />
+                    android:fontFamily="sans-serif-black"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Premium badge -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardBackgroundColor="@color/accent_blue_light"
+                    android:layout_marginBottom="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="5dp"
+                        android:text="Android Developer"
+                        android:textColor="@color/primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
 
                 <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/divider"
-                    android:layout_marginBottom="16dp" />
-
-                <!-- Telegram Row -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-
-                    <!-- Telegram Icon (clickable) -->
-                    <ImageView
-                        android:id="@+id/img_telegram_icon"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:src="@drawable/ic_telegram"
-                        android:scaleType="fitCenter"
-                        android:padding="4dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
-                        android:focusable="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dev_telegram"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/primary" />
-
-                </LinearLayout>
+                    android:layout_marginBottom="20dp" />
 
                 <!-- Bio -->
                 <TextView
@@ -95,7 +131,27 @@
                     android:textSize="14sp"
                     android:textColor="@color/text_secondary"
                     android:gravity="center"
-                    android:lineSpacingExtra="4dp" />
+                    android:lineSpacingExtra="6dp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Telegram Icon only - clickable -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/img_telegram_icon"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="#0088CC"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_telegram"
+                        android:padding="12dp"
+                        android:scaleType="fitCenter"
+                        android:tint="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

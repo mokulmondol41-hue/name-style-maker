@@ -4,25 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     android:padding="16dp">
 
-    <!-- Header label -->
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Header Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Saved Styles"
-        android:textColor="@color/primary"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="12dp"
-        android:layout_marginStart="4dp" />
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/primary"
+        android:layout_marginBottom="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="18dp"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_favorite"
+                android:tint="@color/gold"
+                android:layout_marginEnd="12dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Favorites"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your saved stylish names"
+                    android:textColor="#CCE8FFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <!-- RecyclerView for favorites list -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_favorites_list"
             android:layout_width="match_parent"
@@ -30,7 +61,7 @@
             android:scrollbars="vertical"
             android:visibility="gone" />
 
-        <!-- Empty State panel -->
+        <!-- Empty State -->
         <LinearLayout
             android:id="@+id/layout_empty_favorites"
             android:layout_width="match_parent"
@@ -39,32 +70,40 @@
             android:orientation="vertical"
             android:padding="32dp">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_favorite_border"
-                android:tint="@color/text_secondary"
-                android:contentDescription="Empty heart icon" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="45dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@color/accent_blue_light">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_favorite_border"
+                    android:tint="@color/gold"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/msg_empty_favorites"
+                android:layout_marginTop="20dp"
+                android:text="No Favorites Yet"
                 android:textColor="@color/text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Your offline stars and favorites will appear here for fast copy and sharing later!"
+                android:text="@string/msg_empty_favorites"
                 android:textColor="@color/text_secondary"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
         </LinearLayout>
-
     </FrameLayout>
-
 </LinearLayout>
