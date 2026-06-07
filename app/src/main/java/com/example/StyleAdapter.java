@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.button.MaterialButton;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,14 +40,10 @@ public class StyleAdapter extends RecyclerView.Adapter<StyleAdapter.ViewHolder> 
     }
 
     public void loadTextSizePref() {
-        int sizePref = prefs.getInt("font_size_level", 1); // 0=Small, 1=Medium, 2=Large
-        if (sizePref == 0) {
-            textSizeSp = 14f;
-        } else if (sizePref == 2) {
-            textSizeSp = 24f;
-        } else {
-            textSizeSp = 18f;
-        }
+        int sizePref = prefs.getInt("font_size_level", 1);
+        if (sizePref == 0) textSizeSp = 14f;
+        else if (sizePref == 2) textSizeSp = 24f;
+        else textSizeSp = 18f;
     }
 
     @NonNull
@@ -60,23 +56,17 @@ public class StyleAdapter extends RecyclerView.Adapter<StyleAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         StyledName item = items.get(position);
-        
+
         holder.tvStyledName.setText(item.getStyledText());
         holder.tvStyledName.setTextSize(textSizeSp);
         holder.tvStyleIndex.setText("Style #" + (position + 1));
 
-        // Sync local saved favorite state
         Set<String> favs = prefs.getStringSet("favorites_set", new HashSet<>());
         boolean isFav = favs.contains(item.getStyledText());
         item.setFavorite(isFav);
 
-        if (isFav) {
-            holder.btnFavorite.setImageResource(R.drawable.ic_favorite);
-        } else {
-            holder.btnFavorite.setImageResource(R.drawable.ic_favorite_border);
-        }
+        holder.btnFavorite.setImageResource(isFav ? R.drawable.ic_favorite : R.drawable.ic_favorite_border);
 
-        // Action: Copy
         holder.btnCopy.setOnClickListener(v -> {
             ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("Styled Name", item.getStyledText());
@@ -86,7 +76,6 @@ public class StyleAdapter extends RecyclerView.Adapter<StyleAdapter.ViewHolder> 
             }
         });
 
-        // Action: Share
         holder.btnShare.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
@@ -94,12 +83,10 @@ public class StyleAdapter extends RecyclerView.Adapter<StyleAdapter.ViewHolder> 
             context.startActivity(Intent.createChooser(intent, "Share Styled Name"));
         });
 
-        // Action: Toggle Favorite
         holder.btnFavorite.setOnClickListener(v -> {
             Set<String> currentFavs = new HashSet<>(prefs.getStringSet("favorites_set", new HashSet<>()));
             boolean nextState = !item.isFavorite();
             item.setFavorite(nextState);
-
             if (nextState) {
                 currentFavs.add(item.getStyledText());
                 holder.btnFavorite.setImageResource(R.drawable.ic_favorite);
@@ -107,26 +94,20 @@ public class StyleAdapter extends RecyclerView.Adapter<StyleAdapter.ViewHolder> 
                 currentFavs.remove(item.getStyledText());
                 holder.btnFavorite.setImageResource(R.drawable.ic_favorite_border);
             }
-
             prefs.edit().putStringSet("favorites_set", currentFavs).apply();
-
-            if (favoriteChangeListener != null) {
-                favoriteChangeListener.onFavoriteChanged();
-            }
+            if (favoriteChangeListener != null) favoriteChangeListener.onFavoriteChanged();
         });
     }
 
     @Override
-    public int getItemCount() {
-        return items.size();
-    }
+    public int getItemCount() { return items.size(); }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvStyledName;
         TextView tvStyleIndex;
         ImageButton btnFavorite;
         ImageButton btnShare;
-        ImageButton btnCopy;
+        MaterialButton btnCopy;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -16,20 +16,38 @@
         android:layout_height="wrap_content"
         android:padding="14dp">
 
-        <TextView
-            android:id="@+id/tv_style_text"
+        <LinearLayout
+            android:id="@+id/layout_text_block"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/layout_btn_actions"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/btn_actions"
-            android:textColor="@color/text_primary"
-            android:textSize="17sp"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="2"
-            android:ellipsize="end" />
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/tv_style_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif"
+                android:layout_marginBottom="3dp" />
+
+            <TextView
+                android:id="@+id/tv_styled_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="2"
+                android:ellipsize="end" />
+        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btn_actions"
+            android:id="@+id/layout_btn_actions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -37,19 +55,30 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_favorite"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="0dp"
-                app:icon="@drawable/ic_favorite_border"
-                app:iconTint="@color/gold"
-                app:iconSize="22dp"
-                app:iconPadding="0dp" />
+            <ImageButton
+                android:id="@+id/btn_style_share"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_share"
+                android:tint="@color/text_secondary"
+                android:scaleType="fitCenter"
+                android:padding="6dp"
+                android:contentDescription="Share" />
+
+            <ImageButton
+                android:id="@+id/btn_style_favorite"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_favorite_border"
+                android:tint="@color/gold"
+                android:scaleType="fitCenter"
+                android:padding="6dp"
+                android:contentDescription="Favorite" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_copy"
+                android:id="@+id/btn_style_copy"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:padding="0dp"
@@ -59,7 +88,9 @@
                 app:icon="@drawable/ic_copy"
                 app:iconTint="@color/white"
                 app:iconSize="18dp"
-                app:iconPadding="0dp" />
+                app:iconPadding="0dp"
+                android:contentDescription="Copy" />
+
         </LinearLayout>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
