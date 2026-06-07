@@ -8,8 +8,6 @@
     <string name="msg_empty_input">Please enter a name first!</string>
     <string name="msg_empty_favorites">No favorite styles saved yet.</string>
     <string name="copied_to_clipboard">Copied to clipboard!</string>
-
-    <!-- Settings Screen -->
     <string name="settings_section_general">Appearance</string>
     <string name="setting_dark_mode">Dark Mode</string>
     <string name="setting_dark_mode_desc">Toggle between light and dark themes</string>
@@ -21,17 +19,8 @@
     <string name="setting_share_app">Share App</string>
     <string name="setting_share_app_desc">Recommend this app to your friends</string>
     <string name="msg_rate_click">Thank you for your support!</string>
-    <string name="setting_developer">Developer Profile</string>
-
-    <!-- Join Popup -->
-    <string name="join_popup_title">🎮 Join Our Community!</string>
-    <string name="join_popup_message">Get Free Fire tips, tricks &amp; updates. Join our Telegram channel!</string>
-    <string name="join_popup_btn">Join Now</string>
-    <string name="join_popup_skip">Maybe Later</string>
-
-    <!-- Developer Profile -->
+    <string name="setting_developer">Developer</string>
     <string name="dev_name">Developer SHUVO</string>
-    <string name="dev_age">Age: 17</string>
-    <string name="dev_telegram">Telegram: @shuvo_bhai11</string>
-    <string name="dev_bio">Passionate Android developer &amp; Free Fire enthusiast. Building cool tools for the gaming community! 🎮</string>
+    <string name="dev_telegram">@shuvo_bhai11</string>
+    <string name="dev_bio">Passionate Android developer &amp; Free Fire enthusiast. Building cool tools for the gaming community!</string>
 </resources>
